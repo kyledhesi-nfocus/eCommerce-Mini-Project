@@ -22,8 +22,9 @@ namespace eCommerce_Mini_Project.PageObjects {
         public IWebElement BlogLink => _driver.FindElement(By.LinkText("Blog"));
         
         public void ClickLink(string link) {
+            Thread.Sleep(1000);
+
             WaitForElement(_driver, 5, By.LinkText(link));
-            
             if (link == "Home") {
                 HomeLink.Click();
             } else if (link == "Shop") {   

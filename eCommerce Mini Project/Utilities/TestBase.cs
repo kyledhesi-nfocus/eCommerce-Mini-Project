@@ -13,7 +13,7 @@ namespace eCommerce_Mini_Project.Utilities {
         [SetUp]
         public void Setup() { 
 
-            String browserType = "Edge";
+            String browserType = "Firefox";
             switch (browserType) {
                 case "Firefox":
                     driver = new FirefoxDriver();

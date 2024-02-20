@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using static eCommerce_Mini_Project.Utilities.HelperLibrary;
 
 namespace eCommerce_Mini_Project.PageObjects {
@@ -51,6 +52,10 @@ namespace eCommerce_Mini_Project.PageObjects {
         public string GetOrderNumber() {
             WaitForElement(_driver, 5, By.XPath("//*[@id=\"post-6\"]/div/div/div/ul/li[1]/strong"));
             return OrderNumber;
+        }
+
+        public void OrderRecieved() {
+            WaitForElement(_driver, 5, By.XPath("//*[@id=\"post-6\"]/div/div/div/ul/li[1]"));
         }
         
     }

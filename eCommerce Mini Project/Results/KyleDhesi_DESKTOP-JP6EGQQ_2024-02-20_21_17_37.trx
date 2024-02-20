@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="88d9ad7d-b4fd-44c4-8682-cab057447fd9" name="KyleDhesi@DESKTOP-JP6EGQQ 2024-02-20 21:17:37" runUser="AzureAD\KyleDhesi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2024-02-20T21:17:37.5073911+00:00" queuing="2024-02-20T21:17:37.5073916+00:00" start="2024-02-20T21:17:05.9036293+00:00" finish="2024-02-20T21:18:10.0145803+00:00" />
+  <TestSettings name="default" id="b789d902-8fe6-41c9-81a8-cf1bf84aba70">
+    <Deployment runDeploymentRoot="KyleDhesi_DESKTOP-JP6EGQQ_2024-02-20_21_17_37" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="9a9c5ebd-21bb-4f29-8ef2-ef83406c6be1" testId="d7c33952-ada7-dc1e-1a23-d5f605c2cfa3" testName="TestCase2" computerName="DESKTOP-JP6EGQQ" duration="00:00:32.4409720" startTime="2024-02-20T21:17:37.4450120+00:00" endTime="2024-02-20T21:18:09.8859837+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9a9c5ebd-21bb-4f29-8ef2-ef83406c6be1">
+      <Output>
+        <StdOut>Successfully logged in - Begin Test!&#xD;
+Successfully entered shop&#xD;
+Successfully added item to cart&#xD;
+Successfully entered cart&#xD;
+Successfully entered checkout&#xD;
+Successfully entered billing details&#xD;
+Successfully placed order&#xD;
+Attacthing Order Confirmation to report&#xD;
+Attacthing Order Confirmation screenshot to report&#xD;
+Successfully entered My account&#xD;
+Successfully displayed latest order&#xD;
+Successfully logged out - Test complete!</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="DESKTOP-JP6EGQQ\Order recieved.jpg" />
+        <ResultFile path="DESKTOP-JP6EGQQ\Order recieved[1].jpg" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="144174ff-f72e-456b-802e-8f7af5cea8cd" testId="6007e1c6-3083-b470-b718-e60468035aa8" testName="TestCase1" computerName="DESKTOP-JP6EGQQ" duration="00:00:30.3604270" startTime="2024-02-20T21:17:07.0822945+00:00" endTime="2024-02-20T21:17:37.4426125+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="144174ff-f72e-456b-802e-8f7af5cea8cd">
+      <Output>
+        <StdOut>Successfully logged in - Begin Test!&#xD;
+Successfully entered shop&#xD;
+Successfully added item to cart&#xD;
+Successfully entered cart&#xD;
+Successfully applied coupon&#xD;
+Attacthing Order Confirmation to report&#xD;
+Attacthing coupon applied scrennshot to report&#xD;
+Successfully reduced 15% from original price&#xD;
+Successfully calculated total after coupon &amp; shippping&#xD;
+Successfully removed items&#xD;
+Successfully entered My account&#xD;
+Successfully logged out - Test complete!</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="DESKTOP-JP6EGQQ\Coupon applied.jpg" />
+        <ResultFile path="DESKTOP-JP6EGQQ\Order recieved.jpg" />
+      </ResultFiles>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="TestCase2" storage="c:\users\kyledhesi\source\repos\ecommerce mini project\ecommerce mini project\bin\debug\net6.0\ecommerce mini project.dll" id="d7c33952-ada7-dc1e-1a23-d5f605c2cfa3">
+      <Execution id="9a9c5ebd-21bb-4f29-8ef2-ef83406c6be1" />
+      <TestMethod codeBase="C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\bin\Debug\net6.0\eCommerce Mini Project.dll" adapterTypeName="executor://nunit3testexecutor/" className="eCommerce_Mini_Project.Tests.Test" name="TestCase2" />
+    </UnitTest>
+    <UnitTest name="TestCase1" storage="c:\users\kyledhesi\source\repos\ecommerce mini project\ecommerce mini project\bin\debug\net6.0\ecommerce mini project.dll" id="6007e1c6-3083-b470-b718-e60468035aa8">
+      <Execution id="144174ff-f72e-456b-802e-8f7af5cea8cd" />
+      <TestMethod codeBase="C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\bin\Debug\net6.0\eCommerce Mini Project.dll" adapterTypeName="executor://nunit3testexecutor/" className="eCommerce_Mini_Project.Tests.Test" name="TestCase1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="d7c33952-ada7-dc1e-1a23-d5f605c2cfa3" executionId="9a9c5ebd-21bb-4f29-8ef2-ef83406c6be1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6007e1c6-3083-b470-b718-e60468035aa8" executionId="144174ff-f72e-456b-802e-8f7af5cea8cd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="2" passed="2" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 4.5.0.0: Test execution started&#xD;
+Running all tests in C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\bin\Debug\net6.0\eCommerce Mini Project.dll&#xD;
+   NUnit3TestExecutor discovered 2 of 2 NUnit test cases using Current Discovery mode, Non-Explicit run&#xD;
+NUnit Adapter 4.5.0.0: Test execution complete&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-JP6EGQQ" outcome="Warning" timestamp="2024-02-20T21:17:37.4687016+00:00">
+        <Text>Successfully logged in - Begin Test!&#xD;
+Successfully entered shop&#xD;
+Successfully added item to cart&#xD;
+Successfully entered cart&#xD;
+Successfully applied coupon&#xD;
+Attacthing Order Confirmation to report&#xD;
+Attacthing coupon applied scrennshot to report&#xD;
+Successfully reduced 15% from original price&#xD;
+Successfully calculated total after coupon &amp; shippping&#xD;
+Successfully removed items&#xD;
+Successfully entered My account&#xD;
+Successfully logged out - Test complete!&#xD;
+</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-JP6EGQQ" outcome="Warning" timestamp="2024-02-20T21:18:09.8873625+00:00">
+        <Text>Successfully logged in - Begin Test!&#xD;
+Successfully entered shop&#xD;
+Successfully added item to cart&#xD;
+Successfully entered cart&#xD;
+Successfully entered checkout&#xD;
+Successfully entered billing details&#xD;
+Successfully placed order&#xD;
+Attacthing Order Confirmation to report&#xD;
+Attacthing Order Confirmation screenshot to report&#xD;
+Successfully entered My account&#xD;
+Successfully displayed latest order&#xD;
+Successfully logged out - Test complete!&#xD;
+</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

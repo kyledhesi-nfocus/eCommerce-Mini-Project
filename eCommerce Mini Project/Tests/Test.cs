@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using eCommerce_Mini_Project.PageObjects;
 
 
+
 namespace eCommerce_Mini_Project.Tests {
 
     [TestFixture]
@@ -42,6 +43,11 @@ namespace eCommerce_Mini_Project.Tests {
             // HelperLibrary.takeScreenshot(driver, "Coupon Application.jpg");
             Console.WriteLine("Successfully applied coupon");
 
+            Thread.Sleep(2000);
+            HelperLibrary.TakeScreenshot(driver, "Coupon applied.jpg");
+            TestContext.WriteLine("Attacthing coupon applied scrennshot to report");
+            TestContext.AddTestAttachment(@"C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\Screenshots\Coupon applied.jpg", "Coupon has been added to cart");
+
             decimal originalPrice = cart.GetOriginalPrice(); // Get orignal price
             decimal reducedAmount = cart.GetReducedAmount(); // Get reduced amount
             decimal shippingPrice = cart.GetShippingPrice(); // Get shipping price
@@ -69,7 +75,7 @@ namespace eCommerce_Mini_Project.Tests {
 
 
             navigation.ClickLink("My account");
-            Console.WriteLine("Sucessfully entered My account");
+            Console.WriteLine("Successfully entered My account");
         }
 
         /*
@@ -103,6 +109,12 @@ namespace eCommerce_Mini_Project.Tests {
 
             checkout.PlaceOrder(); // Submit order
             Console.WriteLine("Successfully placed order");
+            
+            checkout.OrderRecieved();
+            HelperLibrary.TakeScreenshot(driver, "Order Recieved.jpg");
+            TestContext.WriteLine("Attacthing Order Confirmation screenshot to report");
+            TestContext.AddTestAttachment(@"C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\Screenshots\Order recieved.jpg", "Order Confirmation");
+
 
             string orderNumber = checkout.GetOrderNumber(); // Get order number
  

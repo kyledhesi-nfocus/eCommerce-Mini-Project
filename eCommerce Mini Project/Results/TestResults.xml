@@ -1,0 +1,69 @@
+<test-run id="2" duration="62.801399" testcasecount="2" total="2" passed="2" failed="0" inconclusive="0" skipped="0" result="Passed" start-time="2024-02-20T 21:17:05Z" end-time="2024-02-20T 21:18:09Z">
+  <test-suite type="Assembly" name="eCommerce Mini Project.dll" fullname="C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\bin\Debug\net6.0\eCommerce Mini Project.dll" total="2" passed="2" failed="0" inconclusive="0" skipped="0" result="Passed" start-time="2024-02-20T 21:17:07Z" end-time="2024-02-20T 21:18:09Z" duration="62.801399">
+    <test-suite type="TestSuite" name="eCommerce_Mini_Project" fullname="eCommerce_Mini_Project" total="2" passed="2" failed="0" inconclusive="0" skipped="0" result="Passed" start-time="2024-02-20T 21:17:07Z" end-time="2024-02-20T 21:18:09Z" duration="62.801399">
+      <test-suite type="TestSuite" name="Tests" fullname="eCommerce_Mini_Project.Tests" total="2" passed="2" failed="0" inconclusive="0" skipped="0" result="Passed" start-time="2024-02-20T 21:17:07Z" end-time="2024-02-20T 21:18:09Z" duration="62.801399">
+        <test-suite type="TestFixture" name="Test" fullname="eCommerce_Mini_Project.Tests.Test" classname="eCommerce_Mini_Project.Tests.Test" total="2" passed="2" failed="0" inconclusive="0" skipped="0" result="Passed" start-time="2024-02-20T 21:17:07Z" end-time="2024-02-20T 21:18:09Z" duration="62.801399">
+          <test-case name="TestCase1" fullname="eCommerce_Mini_Project.Tests.Test.TestCase1" methodname="TestCase1" classname="Test" result="Passed" start-time="2024-02-20T 21:17:07Z" end-time="2024-02-20T 21:17:37Z" duration="30.360427" asserts="0" seed="1686803860">
+            <properties>
+              <property name="Category" value="Smoke Test" />
+            </properties>
+            <output><![CDATA[Successfully logged in - Begin Test!
+Successfully entered shop
+Successfully added item to cart
+Successfully entered cart
+Successfully applied coupon
+Attacthing Order Confirmation to report
+Attacthing coupon applied scrennshot to report
+Successfully reduced 15% from original price
+Successfully calculated total after coupon & shippping
+Successfully removed items
+Successfully entered My account
+Successfully logged out - Test complete!
+
+]]></output>
+            <attachments>
+              <attachment>
+                <filePath>C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\Screenshots\Order recieved.jpg</filePath>
+                <description><![CDATA[Order Confirmation]]></description>
+              </attachment>
+              <attachment>
+                <filePath>C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\Screenshots\Coupon applied.jpg</filePath>
+                <description><![CDATA[Coupon has been added to cart]]></description>
+              </attachment>
+            </attachments>
+          </test-case>
+          <test-case name="TestCase2" fullname="eCommerce_Mini_Project.Tests.Test.TestCase2" methodname="TestCase2" classname="Test" result="Passed" start-time="2024-02-20T 21:17:37Z" end-time="2024-02-20T 21:18:09Z" duration="32.440972" asserts="0" seed="956030014">
+            <properties>
+              <property name="Category" value="Smoke Test" />
+            </properties>
+            <output><![CDATA[Successfully logged in - Begin Test!
+Successfully entered shop
+Successfully added item to cart
+Successfully entered cart
+Successfully entered checkout
+Successfully entered billing details
+Successfully placed order
+Attacthing Order Confirmation to report
+Attacthing Order Confirmation screenshot to report
+Successfully entered My account
+Successfully displayed latest order
+Successfully logged out - Test complete!
+
+]]></output>
+            <attachments>
+              <attachment>
+                <filePath>C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\Screenshots\Order recieved.jpg</filePath>
+                <description><![CDATA[Order Confirmation]]></description>
+              </attachment>
+              <attachment>
+                <filePath>C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\Screenshots\Order recieved.jpg</filePath>
+                <description><![CDATA[Order Confirmation]]></description>
+              </attachment>
+            </attachments>
+          </test-case>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+    <errors />
+  </test-suite>
+</test-run>

@@ -55,6 +55,7 @@ namespace eCommerce_Mini_Project.PageObjects {
 
         public void RemoveItem() {
             WaitForElement(_driver, 5, By.XPath("//*[@id=\"post-5\"]/div/div/form/table/tbody/tr[1]/td[1]/a"));
+            WaitForElementDisabled(_driver, 2, By.CssSelector("blockUI.blockOverlay"));
             RemoveItemButton.Click();
         }
         public void Checkout() {

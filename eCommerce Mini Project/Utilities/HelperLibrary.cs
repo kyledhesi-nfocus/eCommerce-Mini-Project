@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using SeleniumExtras.WaitHelpers;
 using System.Runtime.CompilerServices;
 using static eCommerce_Mini_Project.Utilities.HelperLibrary;
+using NUnit.Framework;
 
 namespace eCommerce_Mini_Project.Utilities {
     public static class HelperLibrary {
@@ -35,7 +36,6 @@ namespace eCommerce_Mini_Project.Utilities {
             }
         }
 
-
         public static decimal ToDecimal(string str) {
             return decimal.Parse(str, NumberStyles.Currency);
         }
@@ -43,7 +43,9 @@ namespace eCommerce_Mini_Project.Utilities {
         public static void TakeScreenshot(IWebDriver driver, string screenshotName) {
             ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
             Screenshot screenshot = screenshotDriver.GetScreenshot();
-            screenshot.SaveAsFile(@"C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\" + screenshotName);
+            screenshot.SaveAsFile(@"C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\Screenshots\" + screenshotName);
+            TestContext.WriteLine("Attacthing Order Confirmation to report");
+            TestContext.AddTestAttachment(@"C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\Screenshots\Order recieved.jpg", "Order Confirmation");
         }
     }
 }
