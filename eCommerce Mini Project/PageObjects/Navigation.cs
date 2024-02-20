@@ -14,28 +14,28 @@ namespace eCommerce_Mini_Project.PageObjects {
         public Navigation(IWebDriver driver) {
             this._driver = driver;
         }
-        public IWebElement homeLink => _driver.FindElement(By.LinkText("Home"));
-        public IWebElement shopLink => _driver.FindElement(By.LinkText("Shop"));
-        public IWebElement cartLink => _driver.FindElement(By.LinkText("Cart"));
-
-        public IWebElement checkoutLink => _driver.FindElement(By.LinkText("Checkout"));
-        public IWebElement myAccountLink => _driver.FindElement(By.LinkText("My account"));
-        public IWebElement blogLink => _driver.FindElement(By.LinkText("Blog"));
-        public void clickLink(string link) {
+        public IWebElement HomeLink => _driver.FindElement(By.LinkText("Home"));
+        public IWebElement ShopLink => _driver.FindElement(By.LinkText("Shop"));
+        public IWebElement CartLink => _driver.FindElement(By.LinkText("Cart"));
+        public IWebElement CheckoutLink => _driver.FindElement(By.LinkText("Checkout"));
+        public IWebElement MyAccountLink => _driver.FindElement(By.LinkText("My account"));
+        public IWebElement BlogLink => _driver.FindElement(By.LinkText("Blog"));
+        
+        public void ClickLink(string link) {
             WaitForElement(_driver, 5, By.LinkText(link));
             
             if (link == "Home") {
-                homeLink.Click();
+                HomeLink.Click();
             } else if (link == "Shop") {   
-                shopLink.Click();
+                ShopLink.Click();
             } else if (link == "Cart") {
-                cartLink.Click();
+                CartLink.Click();
             } else if (link == "Checkout") {
-                checkoutLink.Click();
+                CheckoutLink.Click();
             } else if (link == "My account") {
-                myAccountLink.Click();
+                MyAccountLink.Click();
             } else if (link == "Blog") {
-                blogLink.Click();
+                BlogLink.Click();
             }
         }
 

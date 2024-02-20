@@ -36,11 +36,11 @@ namespace eCommerce_Mini_Project.Utilities {
         }
 
 
-        public static decimal toDecimal(string str) {
+        public static decimal ToDecimal(string str) {
             return decimal.Parse(str, NumberStyles.Currency);
         }
 
-        public static void takeScreenshot(IWebDriver driver, string screenshotName) {
+        public static void TakeScreenshot(IWebDriver driver, string screenshotName) {
             ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
             Screenshot screenshot = screenshotDriver.GetScreenshot();
             screenshot.SaveAsFile(@"C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\" + screenshotName);

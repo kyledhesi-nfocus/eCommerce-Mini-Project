@@ -20,47 +20,56 @@ namespace eCommerce_Mini_Project.Tests {
 
         [Test, Category("Smoke Test"), Order(1)]
         public void TestCase1() {
-            Navigation navigation = new Navigation(driver);
-            Shop shop = new Shop(driver);
-            Cart cart = new Cart(driver);
-            MyAccount myAccount = new MyAccount(driver);
+            Navigation navigation = new(driver);
+            Shop shop = new(driver);
+            Cart cart = new(driver);
+            MyAccount myAccount = new(driver);
 
-            navigation.clickLink("Shop"); // Navigate to shop page
+            navigation.ClickLink("Shop"); // Navigate to shop page
             Console.WriteLine("Successfully entered shop");
 
 
-            shop.addToCart(); // Add item to cart
+            shop.AddToCart(); // Add item to cart
             Console.WriteLine("Successfully added item to cart");
 
-            navigation.clickLink("Cart"); // Navigate to cart page
-            HelperLibrary.takeScreenshot(driver, "Add item to cart.jpg");
+            navigation.ClickLink("Cart"); // Navigate to cart page
             Console.WriteLine("Successfully entered cart");
             
 
-            cart.enterCouponCode(); // Apply coupon
-            HelperLibrary.takeScreenshot(driver, "Apply coupon.jpg");
+            cart.EnterCouponCode(); // Apply coupon
+            
+            
+            // HelperLibrary.takeScreenshot(driver, "Coupon Application.jpg");
             Console.WriteLine("Successfully applied coupon");
 
-            decimal originalPrice = cart.getOriginalPrice(); // Get orignal price
-            decimal reducedAmount = cart.getReducedAmount(); // Get reduced amount
-            decimal shippingPrice = cart.getShippingPrice(); // Get shipping price
-            decimal totalPrice = cart.getTotalPrice(); // Get total price 
+            decimal originalPrice = cart.GetOriginalPrice(); // Get orignal price
+            decimal reducedAmount = cart.GetReducedAmount(); // Get reduced amount
+            decimal shippingPrice = cart.GetShippingPrice(); // Get shipping price
+            decimal totalPrice = cart.GetTotalPrice(); // Get total price 
 
             decimal discountAmount = originalPrice - (originalPrice * 0.85M); // Value to be compared with reducedAmount
             decimal total = (originalPrice - reducedAmount) + shippingPrice; // Value to be compared with totalPrice
             
-            Assert.That(discountAmount, Is.EqualTo(reducedAmount), "Coupon has ");
-            Console.WriteLine("Successfully reduced 15% from original price");
-
-            Assert.That(total, Is.EqualTo(totalPrice), "Incorrect");
-            Console.WriteLine("Successfully calculated total after coupon & shippping");
-
-            navigation.clickLink("My account");
-            Console.WriteLine("Sucessfully entered My account");
+            try {
+                Assert.That(discountAmount, Is.EqualTo(reducedAmount));
+                Console.WriteLine("Successfully reduced 15% from original price");
+            } catch {
+                Assert.Fail("Unsuccessfully reduced 15% from original price");
+            }
             
-            myAccount.logout();
-            Console.WriteLine("Successfully logged out");
+            try {
+                Assert.That(total, Is.EqualTo(totalPrice));
+                Console.WriteLine("Successfully calculated total after coupon & shippping");
+            } catch {
+                Assert.Fail("Unsuccessfully calculated total after coupon & shipping");
+            }
 
+            cart.RemoveItem();
+            Console.WriteLine("Successfully removed items");
+
+
+            navigation.ClickLink("My account");
+            Console.WriteLine("Sucessfully entered My account");
         }
 
         /*
@@ -71,38 +80,46 @@ namespace eCommerce_Mini_Project.Tests {
         public void TestCase2() {
 
             Navigation navigation = new Navigation(driver);
-            Shop shop = new Shop(driver);
-            Cart cart = new Cart(driver);
-            MyAccount myAccount = new MyAccount(driver);
-            Checkout checkout = new Checkout(driver);
+            Shop shop = new (driver);
+            Cart cart = new (driver);
+            MyAccount myAccount = new (driver);
+            Checkout checkout = new(driver);
 
-            navigation.clickLink("Shop"); // Navigate to shop page
+            navigation.ClickLink("Shop"); // Navigate to shop page
             Console.WriteLine("Successfully entered shop");
 
 
-            shop.addToCart(); // Add item to cart
+            shop.AddToCart(); // Add item to cart
             Console.WriteLine("Successfully added item to cart");
 
-            navigation.clickLink("Cart"); // Navigate to cart page
-            HelperLibrary.takeScreenshot(driver, "Add item to cart.jpg");
+            navigation.ClickLink("Cart"); // Navigate to cart page
             Console.WriteLine("Successfully entered cart");
 
-            cart.checkout();
+            cart.Checkout(); // Navigate to checkout page
             Console.WriteLine("Successfully entered checkout");
 
-            checkout.enterDetails();
-            checkout.placeOrder();
+            checkout.EnterBillingDetails(); // Enter billing details
+            Console.WriteLine("Successfully entered billing details");
 
-            string orderNumber = checkout.getOrderNumber();
+            checkout.PlaceOrder(); // Submit order
+            Console.WriteLine("Successfully placed order");
+
+            string orderNumber = checkout.GetOrderNumber(); // Get order number
  
-            navigation.clickLink("My account");
-            myAccount.viewOrders();
+            navigation.ClickLink("My account"); // Navigate to My account
+            Console.WriteLine("Successfully entered My account");
 
-            string myAccountOrderNumber = myAccount.getOrderNumber();
+            myAccount.ViewOrders(); // View all orders
 
-            Assert.That(orderNumber, Is.EqualTo(myAccountOrderNumber.TrimStart('#')).IgnoreCase);
+            string myAccountOrderNumber = myAccount.GetOrderNumber(); // Get latest order number
 
-            myAccount.logout();
+            try {
+                Assert.That(orderNumber, Is.EqualTo(myAccountOrderNumber.TrimStart('#')).IgnoreCase);
+                Console.WriteLine("Successfully displayed latest order");
+            } catch {
+                Assert.Fail("Unsuccessfully displayed latest order");
+            }
+            
         }
     }
 }

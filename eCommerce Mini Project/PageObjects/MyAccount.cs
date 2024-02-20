@@ -17,23 +17,23 @@ namespace eCommerce_Mini_Project.PageObjects {
             this._driver = driver;
         }
 
-        public IWebElement logoutLink => _driver.FindElement(By.LinkText("Logout"));
-        public IWebElement ordersLink => _driver.FindElement(By.LinkText("Orders"));
+        public IWebElement LogoutLink => _driver.FindElement(By.LinkText("Logout"));
+        public IWebElement OrdersLink => _driver.FindElement(By.LinkText("Orders"));
+        public string OrderNumber => _driver.FindElement(By.XPath("//*[@id=\"post-7\"]/div/div/div/table/tbody/tr[1]/td[1]/a")).Text;
 
-        public string orderNumber => _driver.FindElement(By.XPath("//*[@id=\"post-7\"]/div/div/div/table/tbody/tr[1]/td[1]/a")).Text;
-
-        public void logout() {
+        public void Logout() {
             WaitForElement(_driver, 5, By.LinkText("Logout"));
-            logoutLink.Click();
+            LogoutLink.Click();
         }
 
-        public void viewOrders() {
-            ordersLink.Click();
+        public void ViewOrders() {
+            WaitForElement(_driver, 5, By.LinkText("Orders"));
+            OrdersLink.Click();
         }
 
-        public string getOrderNumber() {
+        public string GetOrderNumber() {
             WaitForElement(_driver, 5, By.XPath("//*[@id=\"post-7\"]/div/div/div/table/tbody/tr[1]/td[1]/a"));
-            return orderNumber;
+            return OrderNumber;
         }
     }
 }

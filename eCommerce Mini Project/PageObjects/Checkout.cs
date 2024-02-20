@@ -15,42 +15,42 @@ namespace eCommerce_Mini_Project.PageObjects {
             this._driver = driver;
         }
 
-        public IWebElement firstNameInput => _driver.FindElement(By.Id("billing_first_name"));
-        public IWebElement lastNameInput => _driver.FindElement(By.Id("billing_last_name"));
-        public IWebElement streetNameInput => _driver.FindElement(By.Id("billing_address_1"));
-        public IWebElement cityInput => _driver.FindElement(By.Id("billing_city"));
-        public IWebElement postcodeInput => _driver.FindElement(By.Id("billing_postcode"));
-        public IWebElement phoneNumberInput => _driver.FindElement(By.Id("billing_phone"));
-        public IWebElement emailInput => _driver.FindElement(By.Id("billing_email"));
-        public IWebElement checkPaymentsLink => _driver.FindElement(By.CssSelector("#payment > ul > li.wc_payment_method.payment_method_cheque > label"));
-        public IWebElement placeOrderButton => _driver.FindElement(By.Id("place_order"));
-        public string orderNumber => _driver.FindElement(By.XPath("//*[@id=\"post-6\"]/div/div/div/ul/li[1]/strong")).Text;
+        public IWebElement FirstNameInput => _driver.FindElement(By.Id("billing_first_name"));
+        public IWebElement LastNameInput => _driver.FindElement(By.Id("billing_last_name"));
+        public IWebElement StreetNameInput => _driver.FindElement(By.Id("billing_address_1"));
+        public IWebElement CityInput => _driver.FindElement(By.Id("billing_city"));
+        public IWebElement PostcodeInput => _driver.FindElement(By.Id("billing_postcode"));
+        public IWebElement PhoneNumberInput => _driver.FindElement(By.Id("billing_phone"));
+        public IWebElement EmailInput => _driver.FindElement(By.Id("billing_email"));
+        public IWebElement CheckPaymentsLink => _driver.FindElement(By.CssSelector("#payment > ul > li.wc_payment_method.payment_method_cheque > label"));
+        public IWebElement PlaceOrderButton => _driver.FindElement(By.Id("place_order"));
+        public string OrderNumber => _driver.FindElement(By.XPath("//*[@id=\"post-6\"]/div/div/div/ul/li[1]/strong")).Text;
 
-        public void enterDetails() {
-            firstNameInput.Clear();
-            firstNameInput.SendKeys("King");
-            lastNameInput.Clear();
-            lastNameInput.SendKeys("Charles");
-            streetNameInput.Clear();
-            streetNameInput.SendKeys("Buckingham Palace Road");
-            cityInput.Clear();
-            cityInput.SendKeys("London");
-            postcodeInput.Clear();
-            postcodeInput.SendKeys("SW1A 1AA");
-            phoneNumberInput.Clear();
-            phoneNumberInput.SendKeys("0798347190321");
+        public void EnterBillingDetails() {
+            FirstNameInput.Clear();
+            FirstNameInput.SendKeys("King");
+            LastNameInput.Clear();
+            LastNameInput.SendKeys("Charles");
+            StreetNameInput.Clear();
+            StreetNameInput.SendKeys("Buckingham Palace Road");
+            CityInput.Clear();
+            CityInput.SendKeys("London");
+            PostcodeInput.Clear();
+            PostcodeInput.SendKeys("SW1A 1AA");
+            PhoneNumberInput.Clear();
+            PhoneNumberInput.SendKeys("0798347190321");
         }
-        public void placeOrder() {
+        public void PlaceOrder() {
             WaitForElementDisabled(_driver, 2, By.CssSelector("#payment > ul > li.wc_payment_method.payment_method_cheque > label"));
             WaitForElementDisabled(_driver, 2, By.CssSelector("blockUI.blockOverlay"));
 
-            checkPaymentsLink.Click();
-            placeOrderButton.Click();
+            CheckPaymentsLink.Click();
+            PlaceOrderButton.Click();
         }
 
-        public string getOrderNumber() {
+        public string GetOrderNumber() {
             WaitForElement(_driver, 5, By.XPath("//*[@id=\"post-6\"]/div/div/div/ul/li[1]/strong"));
-            return orderNumber;
+            return OrderNumber;
         }
         
     }

@@ -16,11 +16,11 @@ namespace eCommerce_Mini_Project.PageObjects {
         public Shop(IWebDriver driver) {
             this._driver = driver;
         }
-        public IWebElement addItemToCart => _driver.FindElement(By.XPath("//*[@id=\"main\"]/ul/li[2]/a[2]"));
+        public IWebElement AddItemToCart => _driver.FindElement(By.XPath("//*[@id=\"main\"]/ul/li[2]/a[2]"));
         
-        public void addToCart() {
+        public void AddToCart() {
             WaitForElement(_driver, 5, By.XPath("//*[@id=\"main\"]/ul/li[2]/a[2]"));
-            addItemToCart.Click();
+            AddItemToCart.Click();
             
         }
     }

@@ -13,7 +13,7 @@ namespace eCommerce_Mini_Project.Utilities {
         [SetUp]
         public void Setup() { 
 
-            String browserType = "Firefox";
+            String browserType = "Edge";
             switch (browserType) {
                 case "Firefox":
                     driver = new FirefoxDriver();
@@ -25,19 +25,22 @@ namespace eCommerce_Mini_Project.Utilities {
             
             driver.Url = "https://www.edgewordstraining.co.uk/demo-site/my-account/";
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-
+            
             LoginMyAccount loginMyAccount = new LoginMyAccount(driver);
             loginMyAccount.LoginToAccount("kyle123@nfocus.co.uk", "Password1234567!");
             loginMyAccount.ClickLoginButton();
 
-            Console.WriteLine("Completed login process - Begin Test!");
+            Console.WriteLine("Successfully logged in - Begin Test!");
         }
 
         [TearDown]
         public void Teardown() {
-            Thread.Sleep(5000);
+            MyAccount myAccount = new(driver);
+            myAccount.Logout();
+
+            Thread.Sleep(2000);
             driver.Quit();
-            Console.WriteLine("Test complete!");
+            Console.WriteLine("Successfully logged out - Test complete!");
         }
     }
 }

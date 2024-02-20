@@ -16,42 +16,50 @@ namespace eCommerce_Mini_Project.PageObjects {
             this._driver = driver;
         }
 
-        public IWebElement couponCodeInput => _driver.FindElement(By.Id("coupon_code"));
-        public IWebElement addressInputLink => _driver.FindElement(By.CssSelector("#post-5 > div > div > div.cart-collaterals > div > table > tbody > tr.woocommerce-shipping-totals.shipping > td > form > a"));
-        public IWebElement checkoutButton => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/div/a"));
-        public string originalPrice => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[1]/td/span")).Text;
-        public string reducedAmount => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[2]/td/span")).Text;
-        public string shippingPrice => _driver.FindElement(By.XPath("//*[@id=\"shipping_method\"]/li/label/span")).Text;
-        public string totalPrice => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[4]/td/strong/span")).Text;
+        public IWebElement CouponCodeInput => _driver.FindElement(By.Id("coupon_code"));    
+        public IWebElement AddressInputLink => _driver.FindElement(By.CssSelector("#post-5 > div > div > div.cart-collaterals > div > table > tbody > tr.woocommerce-shipping-totals.shipping > td > form > a"));
+        public IWebElement CheckoutButton => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/div/a"));
+        public IWebElement RemoveItemButton => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/form/table/tbody/tr[1]/td[1]/a"));
+        public string OriginalPrice => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[1]/td/span")).Text;
+        public string ReducedAmount => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[2]/td/span")).Text;
+        public string ShippingPrice => _driver.FindElement(By.XPath("//*[@id=\"shipping_method\"]/li/label/span")).Text;
+        public string TotalPrice => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[4]/td/strong/span")).Text;
 
 
-        public void enterCouponCode() {
-            couponCodeInput.SendKeys("edgewords");
-            couponCodeInput.SendKeys(Keys.Enter);
+        public void EnterCouponCode() {
+            WaitForElement(_driver, 5, By.Id("coupon_code"));
+            CouponCodeInput.Clear();
+            CouponCodeInput.SendKeys("edgewords");
+            CouponCodeInput.SendKeys(Keys.Enter);
         }
 
-        public decimal getOriginalPrice() {
+        public decimal GetOriginalPrice() {
             WaitForElement(_driver, 5, By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[1]/td/span"));
-            return toDecimal(originalPrice);
+            return ToDecimal(OriginalPrice);
         }
 
-        public decimal getReducedAmount() {
+        public decimal GetReducedAmount() {
             WaitForElement(_driver, 5, By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[2]/td/span"));
-            return toDecimal(reducedAmount);
+            return ToDecimal(ReducedAmount);
         }
 
-        public decimal getShippingPrice() {
+        public decimal GetShippingPrice() {
             WaitForElement(_driver, 5, (By.XPath("//*[@id=\"shipping_method\"]/li/label/span")));
-            return toDecimal(shippingPrice);
+            return ToDecimal(ShippingPrice);
         }
 
-        public decimal getTotalPrice() {
+        public decimal GetTotalPrice() {
             WaitForElement(_driver, 5, By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[4]/td/strong/span"));
-            return toDecimal(totalPrice);
+            return ToDecimal(TotalPrice);
         }
 
-        public void checkout() {
-            checkoutButton.Click();
+        public void RemoveItem() {
+            WaitForElement(_driver, 5, By.XPath("//*[@id=\"post-5\"]/div/div/form/table/tbody/tr[1]/td[1]/a"));
+            RemoveItemButton.Click();
+        }
+        public void Checkout() {
+            WaitForElement(_driver, 5, By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/div/a"));
+            CheckoutButton.Click();
         }
     }
 }

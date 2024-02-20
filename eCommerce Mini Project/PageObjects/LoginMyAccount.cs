@@ -14,24 +14,24 @@ namespace eCommerce_Mini_Project.PageObjects {
             this._driver = driver;
         }
 
-        public IWebElement usernameField => _driver.FindElement(By.Id("username"));
-        public IWebElement passwordField => _driver.FindElement(By.Id("password"));
-        public IWebElement loginButton => _driver.FindElement(By.CssSelector("#customer_login > div.u-column1.col-1 > form > p:nth-child(3) > button"));
-        public IWebElement dismiss => _driver.FindElement(By.ClassName("woocommerce-store-notice__dismiss-link"));
+        public IWebElement UsernameField => _driver.FindElement(By.Id("username"));
+        public IWebElement PasswordField => _driver.FindElement(By.Id("password"));
+        public IWebElement LoginButton => _driver.FindElement(By.CssSelector("#customer_login > div.u-column1.col-1 > form > p:nth-child(3) > button"));
+        public IWebElement Dismiss => _driver.FindElement(By.ClassName("woocommerce-store-notice__dismiss-link"));
 
         public void LoginToAccount(string username, string password) {
-            usernameField.Clear();
-            usernameField.Click();
-            usernameField.SendKeys(username);
+            UsernameField.Clear();
+            UsernameField.Click();
+            UsernameField.SendKeys(username);
 
-            passwordField.Clear();
-            passwordField.Click();
-            passwordField.SendKeys(password);
+            PasswordField.Clear();
+            PasswordField.Click();
+            PasswordField.SendKeys(password);
         }
 
         public void ClickLoginButton() {
-            dismiss.Click();
-            loginButton.Click();
+            Dismiss.Click();
+            LoginButton.Click();
         }
     }
 }
