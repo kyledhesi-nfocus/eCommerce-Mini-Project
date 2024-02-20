@@ -8,44 +8,101 @@ using System.Text;
 using System.Threading.Tasks;
 using eCommerce_Mini_Project.PageObjects;
 
+
 namespace eCommerce_Mini_Project.Tests {
 
     [TestFixture]
     public class Test : Utilities.TestBase {
 
-        [Test, Order(1)]
-        public void checkCoupon() {
+        /*
+         * Testing functionality of coupon application
+         */
+
+        [Test, Category("Smoke Test"), Order(1)]
+        public void TestCase1() {
             Navigation navigation = new Navigation(driver);
-            navigation.clickLink("Shop");
+            Shop shop = new Shop(driver);
+            Cart cart = new Cart(driver);
+            MyAccount myAccount = new MyAccount(driver);
 
-            Shop shop = new Shop(driver);     
-            shop.addToCart();
+            navigation.clickLink("Shop"); // Navigate to shop page
+            Console.WriteLine("Successfully entered shop");
 
+
+            shop.addToCart(); // Add item to cart
+            Console.WriteLine("Successfully added item to cart");
+
+            navigation.clickLink("Cart"); // Navigate to cart page
+            HelperLibrary.takeScreenshot(driver, "Add item to cart.jpg");
+            Console.WriteLine("Successfully entered cart");
             
 
-            navigation.clickLink("Cart");
+            cart.enterCouponCode(); // Apply coupon
+            HelperLibrary.takeScreenshot(driver, "Apply coupon.jpg");
+            Console.WriteLine("Successfully applied coupon");
 
-            Cart cart = new Cart(driver);
-            cart.enterCouponCode();
+            decimal originalPrice = cart.getOriginalPrice(); // Get orignal price
+            decimal reducedAmount = cart.getReducedAmount(); // Get reduced amount
+            decimal shippingPrice = cart.getShippingPrice(); // Get shipping price
+            decimal totalPrice = cart.getTotalPrice(); // Get total price 
 
-            decimal originalPrice = cart.getOriginalPrice();
-            decimal reducedAmount = cart.getReducedAmount();
-            decimal shippingPrice = cart.getShippingPrice();
-
-            decimal discountAmount = originalPrice - (originalPrice * 0.85M); // Calculate 15% off, check 
-
-
-            decimal total = (originalPrice - reducedAmount) + shippingPrice; // Calculated total - value to be compared
-            decimal totalPrice = cart.getTotalPrice(); // total price displayed 
-
+            decimal discountAmount = originalPrice - (originalPrice * 0.85M); // Value to be compared with reducedAmount
+            decimal total = (originalPrice - reducedAmount) + shippingPrice; // Value to be compared with totalPrice
+            
             Assert.That(discountAmount, Is.EqualTo(reducedAmount), "Coupon has ");
+            Console.WriteLine("Successfully reduced 15% from original price");
+
             Assert.That(total, Is.EqualTo(totalPrice), "Incorrect");
+            Console.WriteLine("Successfully calculated total after coupon & shippping");
 
             navigation.clickLink("My account");
-
-            MyAccount myAccount = new MyAccount(driver);
+            Console.WriteLine("Sucessfully entered My account");
+            
             myAccount.logout();
+            Console.WriteLine("Successfully logged out");
 
+        }
+
+        /*
+         * Testing functionality of completing an order 
+         */
+
+        [Test, Category("Smoke Test"), Order(2)]
+        public void TestCase2() {
+
+            Navigation navigation = new Navigation(driver);
+            Shop shop = new Shop(driver);
+            Cart cart = new Cart(driver);
+            MyAccount myAccount = new MyAccount(driver);
+            Checkout checkout = new Checkout(driver);
+
+            navigation.clickLink("Shop"); // Navigate to shop page
+            Console.WriteLine("Successfully entered shop");
+
+
+            shop.addToCart(); // Add item to cart
+            Console.WriteLine("Successfully added item to cart");
+
+            navigation.clickLink("Cart"); // Navigate to cart page
+            HelperLibrary.takeScreenshot(driver, "Add item to cart.jpg");
+            Console.WriteLine("Successfully entered cart");
+
+            cart.checkout();
+            Console.WriteLine("Successfully entered checkout");
+
+            checkout.enterDetails();
+            checkout.placeOrder();
+
+            string orderNumber = checkout.getOrderNumber();
+ 
+            navigation.clickLink("My account");
+            myAccount.viewOrders();
+
+            string myAccountOrderNumber = myAccount.getOrderNumber();
+
+            Assert.That(orderNumber, Is.EqualTo(myAccountOrderNumber.TrimStart('#')).IgnoreCase);
+
+            myAccount.logout();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace eCommerce_Mini_Project.PageObjects {
 
         public IWebElement couponCodeInput => _driver.FindElement(By.Id("coupon_code"));
         public IWebElement addressInputLink => _driver.FindElement(By.CssSelector("#post-5 > div > div > div.cart-collaterals > div > table > tbody > tr.woocommerce-shipping-totals.shipping > td > form > a"));
-        
+        public IWebElement checkoutButton => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/div/a"));
         public string originalPrice => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[1]/td/span")).Text;
         public string reducedAmount => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[2]/td/span")).Text;
         public string shippingPrice => _driver.FindElement(By.XPath("//*[@id=\"shipping_method\"]/li/label/span")).Text;
@@ -48,6 +48,10 @@ namespace eCommerce_Mini_Project.PageObjects {
         public decimal getTotalPrice() {
             WaitForElement(_driver, 5, By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[4]/td/strong/span"));
             return toDecimal(totalPrice);
+        }
+
+        public void checkout() {
+            checkoutButton.Click();
         }
     }
 }

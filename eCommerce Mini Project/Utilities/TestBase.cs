@@ -11,11 +11,10 @@ namespace eCommerce_Mini_Project.Utilities {
 #pragma warning restore NUnit1032 // An IDisposable field/property should be Disposed in a TearDown method
 
         [SetUp]
-        public void Setup() {
-          
+        public void Setup() { 
+
             String browserType = "Firefox";
-            switch (browserType)
-            {
+            switch (browserType) {
                 case "Firefox":
                     driver = new FirefoxDriver();
                     break;
@@ -30,15 +29,15 @@ namespace eCommerce_Mini_Project.Utilities {
             LoginMyAccount loginMyAccount = new LoginMyAccount(driver);
             loginMyAccount.LoginToAccount("kyle123@nfocus.co.uk", "Password1234567!");
             loginMyAccount.ClickLoginButton();
-            
-            Console.WriteLine("Successfully logged in - Begin Test");
+
+            Console.WriteLine("Completed login process - Begin Test!");
         }
 
         [TearDown]
         public void Teardown() {
             Thread.Sleep(5000);
             driver.Quit();
-            Console.WriteLine("Complete Test");
+            Console.WriteLine("Test complete!");
         }
     }
 }
