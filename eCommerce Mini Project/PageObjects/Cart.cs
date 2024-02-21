@@ -25,7 +25,6 @@ namespace eCommerce_Mini_Project.PageObjects {
         public string ShippingPrice => _driver.FindElement(By.XPath("//*[@id=\"shipping_method\"]/li/label/span")).Text;
         public string TotalPrice => _driver.FindElement(By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/table/tbody/tr[4]/td/strong/span")).Text;
 
-
         public void EnterCouponCode() {
             WaitForElement(_driver, 5, By.Id("coupon_code"));
             CouponCodeInput.Clear();
@@ -61,6 +60,10 @@ namespace eCommerce_Mini_Project.PageObjects {
         public void Checkout() {
             WaitForElement(_driver, 5, By.XPath("//*[@id=\"post-5\"]/div/div/div[2]/div/div/a"));
             CheckoutButton.Click();
+        }
+
+        public void WaitForAlert() {
+            WaitForElement(_driver, 5, By.CssSelector("#post-5 > div > div > div.woocommerce-notices-wrapper > div")); // Wait for coupon applied
         }
     }
 }

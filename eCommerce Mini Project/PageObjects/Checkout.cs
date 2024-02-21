@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using eCommerce_Mini_Project.Utilities;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,20 +28,21 @@ namespace eCommerce_Mini_Project.PageObjects {
         public IWebElement PlaceOrderButton => _driver.FindElement(By.Id("place_order"));
         public string OrderNumber => _driver.FindElement(By.XPath("//*[@id=\"post-6\"]/div/div/div/ul/li[1]/strong")).Text;
 
-        public void EnterBillingDetails() {
+        public void EnterBillingDetails(BillingDetails billingDetails) {
             FirstNameInput.Clear();
-            FirstNameInput.SendKeys("King");
+            FirstNameInput.SendKeys(billingDetails.FirstName);
             LastNameInput.Clear();
-            LastNameInput.SendKeys("Charles");
+            LastNameInput.SendKeys(billingDetails.LastName);
             StreetNameInput.Clear();
-            StreetNameInput.SendKeys("Buckingham Palace Road");
+            StreetNameInput.SendKeys(billingDetails.StreetName);
             CityInput.Clear();
-            CityInput.SendKeys("London");
+            CityInput.SendKeys(billingDetails.City);
             PostcodeInput.Clear();
-            PostcodeInput.SendKeys("SW1A 1AA");
+            PostcodeInput.SendKeys(billingDetails.Postcode);
             PhoneNumberInput.Clear();
-            PhoneNumberInput.SendKeys("0798347190321");
+            PhoneNumberInput.SendKeys(billingDetails.PhoneNumber);
         }
+
         public void PlaceOrder() {
             WaitForElementDisabled(_driver, 2, By.CssSelector("#payment > ul > li.wc_payment_method.payment_method_cheque > label"));
             WaitForElementDisabled(_driver, 2, By.CssSelector("blockUI.blockOverlay"));

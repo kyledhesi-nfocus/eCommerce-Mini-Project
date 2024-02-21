@@ -11,23 +11,34 @@ namespace eCommerce_Mini_Project.Utilities {
 #pragma warning restore NUnit1032 // An IDisposable field/property should be Disposed in a TearDown method
 
         [SetUp]
-        public void Setup() { 
+        public void Setup() {
 
-            String browserType = "Firefox";
-            switch (browserType) {
-                case "Firefox":
-                    driver = new FirefoxDriver();
-                    break;
-                case "Edge":
+            string browser = Environment.GetEnvironmentVariable("BROWSER");
+            
+            Console.WriteLine("Browser set to: " + browser);
+
+            if (browser == null) {
+                browser = "firefox";
+                Console.WriteLine("Browser environment not set: Setting to Firefox");
+            }
+
+            switch (browser) {
+                case "edge":
                     driver = new EdgeDriver();
                     break;
+                case "firefox":
+                    driver = new FirefoxDriver();
+                    break;
             }
-            
-            driver.Url = "https://www.edgewordstraining.co.uk/demo-site/my-account/";
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            
+
+            string startUrl = TestContext.Parameters["WebAppURL"];
+            driver.Url = startUrl;
+
             LoginMyAccount loginMyAccount = new LoginMyAccount(driver);
-            loginMyAccount.LoginToAccount("kyle123@nfocus.co.uk", "Password1234567!");
+
+            string username = Environment.GetEnvironmentVariable("SECRET_USERNAME");
+            string password = Environment.GetEnvironmentVariable("SECRET_PASSWORD");
+            loginMyAccount.LoginToAccount(username, password);
             loginMyAccount.ClickLoginButton();
 
             Console.WriteLine("Successfully logged in - Begin Test!");

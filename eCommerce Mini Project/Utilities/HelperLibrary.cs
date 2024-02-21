@@ -44,8 +44,6 @@ namespace eCommerce_Mini_Project.Utilities {
             ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
             Screenshot screenshot = screenshotDriver.GetScreenshot();
             screenshot.SaveAsFile(@"C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\Screenshots\" + screenshotName);
-            TestContext.WriteLine("Attacthing Order Confirmation to report");
-            TestContext.AddTestAttachment(@"C:\Users\KyleDhesi\source\repos\eCommerce Mini Project\eCommerce Mini Project\Screenshots\Order recieved.jpg", "Order Confirmation");
         }
     }
 }
